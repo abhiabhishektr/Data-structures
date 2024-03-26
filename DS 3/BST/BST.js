@@ -120,7 +120,7 @@ class BST {
     }
 
     // Closest value to a given number
-    closestValue(target) {
+    // closestValue(target) {
         // TODO: Implement closest value search
         //       // Closest value to a given number
         // closestValue(target) {
@@ -140,7 +140,7 @@ class BST {
         //   }
         //   return closest;
         // }
-    }
+    // }
 
     // Validation - Check if the tree is a BST
     isValidBST(node = this.root, min = null, max = null) {

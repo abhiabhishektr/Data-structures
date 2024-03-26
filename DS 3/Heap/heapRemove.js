@@ -63,6 +63,8 @@ class MaxHeap {
             this.heapifyDown(largestIndex);
         }
     }
+
+    
     remove(value) {
         const index = this.heap.indexOf(value);
         if (index === -1) return false;
