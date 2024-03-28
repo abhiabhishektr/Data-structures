@@ -42,7 +42,7 @@ heap.insert(425);
 heap.insert(43);
 heap.insert(1);
 // heap.print()
-console.log(heap.heap[0])
+console.log(heap.heap)
 // console.log(heap.heap[heap.heap.length-1]); // Output: [1, 3, 10, 5]
 
 
