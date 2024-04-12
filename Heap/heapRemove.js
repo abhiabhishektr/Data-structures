@@ -43,18 +43,18 @@ class MaxHeap {
     }
 
     heapifyDown(index) {
-        const leftChildIndex = 2 * index + 1;
-        const rightChildIndex = 2 * index + 2;
+        const LEFT = 2 * index + 1;
+        const RIGHT = 2 * index + 2;
         let largestIndex = index;
 
         // Compare the current node with its left child
-        if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] > this.heap[largestIndex]) {
-            largestIndex = leftChildIndex;
+        if (LEFT < this.heap.length && this.heap[LEFT] > this.heap[largestIndex]) {
+            largestIndex = LEFT;
         }
 
         // Compare the current node with its right child
-        if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largestIndex]) {
-            largestIndex = rightChildIndex;
+        if (RIGHT < this.heap.length && this.heap[RIGHT] > this.heap[largestIndex]) {
+            largestIndex = RIGHT;
         }
 
         // If the largest element is not the current node, swap them and continue heapifying down

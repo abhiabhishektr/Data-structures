@@ -47,6 +47,42 @@ class TreeNode {
       console.log(node.value); // Print value of current node
       this.inorder(node.right); // Recursively traverse right subtree
     }
+
+    delete(value) {
+      this.root = this.deleteNode(this.root, value);
+    }
+  
+    deleteNode(node, value) {
+      if (!node) {
+        return null;
+      }
+  
+      if (value < node.value) {
+        node.left = this.deleteNode(node.left, value);
+      } else if (value > node.value) {
+        node.right = this.deleteNode(node.right, value);
+      } else {
+        if (!node.left && !node.right) {
+          return null;
+        } else if (!node.left) {
+          return node.right;
+        } else if (!node.right) {
+          return node.left;
+        } else {
+          let minRightNode = this.findMinNode(node.right);
+          node.value = minRightNode.value;
+          node.right = this.deleteNode(node.right, minRightNode.value);
+        }
+      }
+      return node;
+    }
+  
+    findMinNode(node) {
+      while (node.left) {
+        node = node.left;
+      }
+      return node;
+    }
   }
   
   // Create a sample BST
@@ -60,6 +96,13 @@ class TreeNode {
   bst.insert(7);
   
   // Perform inorder traversal (prints values in sorted order)
-  console.log("Inorder traversal:");
+  console.log("Inorder traversal before deletion:");
+  bst.inorder();
+  
+  // Delete node with value 3
+  bst.delete(3);
+  
+  // Perform inorder traversal after deletion
+  console.log("Inorder traversal after deletion:");
   bst.inorder();
   

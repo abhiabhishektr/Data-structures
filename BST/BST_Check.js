@@ -43,3 +43,26 @@ bst.right = new TreeNode(7);
 console.log(findClosestValue(4,bst));
 
 // console.log(isValidBST(bst)); // Output: true
+
+
+// Search  
+
+//sorted array to graph .
+var searchBST = function(root, val) {
+    if(!root || root.val == val) return root;
+    if(val<root.val) return searchBST(root.left,val);
+    return searchBST(root.right,val);
+   };
+
+   var sortedArrayToBST = function (nums) {
+    if (nums.length === 0) {
+        return null;
+    }
+    const midIndex = Math.floor(nums.length / 2);
+    const root = new TreeNode(nums[midIndex]);
+
+    root.left = sortedArrayToBST(nums.slice(0, midIndex));
+    root.right = sortedArrayToBST(nums.slice(midIndex + 1));
+
+    return root;
+}

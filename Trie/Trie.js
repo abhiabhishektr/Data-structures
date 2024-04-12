@@ -2,26 +2,9 @@
 
 //======= basic structure of a Trie node in JavaScript ========
 // Answer:
-class TrieNode {
-    constructor() {
-        this.children = new Map(); // Map to store child nodes
-        this.isEndOfWord = false; // Flag to mark end of a word
-    }
-}
+
 // 
 //======= insert a word into a Trie in JavaScript ========
-// Answer:
-function insertWord(root, word) {
-    let node = root;
-    for (let char of word) {
-        if (!node.children.has(char)) {
-            node.children.set(char, new TrieNode());
-        }
-        node = node.children.get(char);
-    }
-    node.isEndOfWord = true; // Mark end of word
-}
-
 //              (root)
 //              /      \
 //              a        b
@@ -41,6 +24,25 @@ function insertWord(root, word) {
 //              t            (end)
 //              |            |
 //              (end)        (end)
+class TrieNode {
+    constructor() {
+        this.children = new Map(); // Map to store child nodes
+        this.isEndOfWord = false; // Flag to mark end of a word
+    }
+}
+
+// Answer:
+function insertWord(root, word) {
+    let node = root;
+    for (let char of word) {
+        if (!node.children.has(char)) {
+            node.children.set(char, new TrieNode());
+        }
+        node = node.children.get(char);
+    }
+    node.isEndOfWord = true; // Mark end of word
+}
+
 
 
 //======= search for a word in a Trie in JavaScript ========
@@ -99,5 +101,17 @@ function isPrefixPresent(root, prefix) {
 
 
 
+// function for printing 
 
-
+function printWords(root, prefix = "") {
+    // If the current node represents the end of a word, print the word
+    if (root.isEndOfWord) {
+        console.log(prefix);
+    }
+    
+    // Recursively print words for each child node
+    for (let [char, child] of root.children) {
+        printWords(child, prefix + char);
+    }
+  }
+  
